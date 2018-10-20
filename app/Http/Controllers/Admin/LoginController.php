@@ -12,7 +12,7 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    protected $redirectTo = '';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -21,7 +21,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest.admin', ['except' => 'logout']);
+        $this->middleware('guest', ['except' => 'logout']);
     }
 
     public function username()
@@ -34,11 +34,6 @@ class LoginController extends Controller
         return view('admin.login');
     }
 
-    protected function guard()
-    {
-        return Auth::guard('admin');
-    }
-
     public function logout(Request $request)
     {
         $this->guard()->logout();
@@ -49,6 +44,5 @@ class LoginController extends Controller
 
         return redirect('/login');
     }
-
 
 }

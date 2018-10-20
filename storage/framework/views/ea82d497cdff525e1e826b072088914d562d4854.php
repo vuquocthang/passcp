@@ -52,7 +52,7 @@ Bảng Theo Dõi Tiến Độ
 
                                     <td><?php echo e($item->thanh_phan); ?></td>
 
-                                    <td><?php echo e($item->can_cu_qdpl); ?></td>
+                                    <td><?php echo e($item->pl_content); ?></td>
 
                                     <td><?php echo e($item->note); ?></td>
 

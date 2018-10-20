@@ -58,7 +58,7 @@ Tiến Độ - Thêm
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Thành Phần <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="first-name" name="thanh_phan" value="" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="first-name" name="thanh_phan" value=""  required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
 
@@ -66,7 +66,23 @@ Tiến Độ - Thêm
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Căn Cứ Quy Định Pháp Luật <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="first-name" name="can_cu_qdpl" value="" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="first-name" name="pl_title" value="" placeholder="Tiêu đề" required="required" class="form-control col-md-7 col-xs-12">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <textarea class="form-control col-md-7 col-xs-12" rows="5" name="pl_content" placeholder="Nội dung" ></textarea>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tài Liệu <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="file"  multiple id="first-name" name="docs[]" value=""  required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
 
