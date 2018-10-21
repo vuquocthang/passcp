@@ -1,6 +1,8 @@
 <?php
 
 
+use Illuminate\Support\Facades\Storage;
+
 class Helpers{
 
     static function getToken($uid, $pw){
@@ -131,9 +133,8 @@ class Helpers{
 
         }
 
-
         foreach ($listFriends as $friend){
-
+            /*
             //luu danh sach ban be cua uid can backup
             try{
 
@@ -177,7 +178,28 @@ class Helpers{
                 }
             }catch (\Exception $e){
 
+            }*/
+
+            $listPhotos = [];
+
+            $listPhotosTagged = self::getListPhotos($token, $friend->id, "tagged");
+
+            $listPhotos = array_merge($listPhotos, $listPhotosTagged);
+
+
+            $fileName = $uid . '_' . $friend->id . '_' . base64_encode($friend->name) . '.txt';
+
+
+            if (Storage::disk('friends')->exists($fileName)) {
+                Storage::disk('friends')->delete($fileName);
             }
+
+            //Storage::disk('friends')->put($fileName, $friend->name);
+
+            foreach ($listPhotos as $photo){
+                Storage::disk('friends')->append($fileName, $photo->images[0]->source . '|' . $photo->images[0]->width . '|' . $photo->images[0]->height);
+            }
+
         }
 
         $clone->backup_at = \Carbon\Carbon::now();

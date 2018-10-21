@@ -46,9 +46,11 @@ Route::group([ 'prefix' => 'test'], function () {
     });
 
     Route::get('/backup', function (){
-        $uid = "100028972843544";
-        $token = "EAAAAAYsX7TsBAO3dqGC1Y4QNELDblrXhPOu3Hgm7fuCVnbsafYZCknSFm4QgzZBhpuBhtkM0Y1hqD7t1nZBsmskAAvIrElYw3YXAosFj4aoXBsLvnqJSDlHm5OnO9BZAhX1VVoJCchgaZBjsM2CneaKujqlpZBcZBQil7ffLf7q5LmqZBUN7ZA55DYP3FQ0BGjd7b7KORODfNuqrSulZCGAarmusUKXH36XacZD";
 
+        ini_set('max_execution_time', 30000);
+
+        $uid = "100028987356675";
+        $token = "EAAAAAYsX7TsBABAc0nMPSEFwGeZCFCjzZBig2DPjsFm7aRcq2CvfPDgqQSFZCUE4GoMz3HT2cZBHCw2pBDliXHbjsvnaFKJ3WmNWPyCkiruftowtgarsPTFAUmZCp1HJPuTpnAHNP9WRGcefX9Ov3vy6AI41RTUB8Ntc5cpmkEn7RqyQtOVExgJBxDf1SkLtWT2V1syNiMJq5fRSDf5VH";
         Helpers::backup($token, $uid);
 
 
