@@ -189,20 +189,9 @@ class PassCheckpoint
             echo $r->getBody()->getContents();
         //nếu xác minh ảnh bạn bè
         }else{
-            $choiceNames = $this->choice_names;
-            $imageLink = $this->image_link;
-
             try{
-                $detectedName = $this->uid->detectImage($choiceNames, $imageLink);
-
                 //giá trị của ảnh cần gửi lên server
-                $selectedValue = -1;
-
-                foreach ($choiceNames as $key => $name){
-                    if ($detectedName == $name){
-                        $selectedValue = $key;
-                    }
-                }
+                $selectedValue = PassCheckpointHelper::checkImage($this->uid->uid, $this->choice_names, $this->image_link);
 
                 //gửi request
                 $r = $this->client->post($url, [

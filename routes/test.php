@@ -119,6 +119,25 @@ Route::group([ 'prefix' => 'test'], function () {
 
     });
 
+    Route::get('/process2', function (){
+        $uid = '100028987356675';
+
+        $listName = [
+            'Đỗ Công Thương',
+            'Kiên T Đinh',
+            'Quang Minh'
+        ];
+
+        $imageLink = "https://scontent.fhan4-1.fna.fbcdn.net/v/t1.0-9/41804883_332034854198456_3978231539732316160_n.jpg?_nc_cat=105&_nc_eui2=AeEt_SNAv-IijCkap-KstFW2xiu9zq1t5K5LAv1ekt06FQfMgmKawO-9bZZWufcsL1vlKhHRhwGi5ZqK7zpmen-prty0e9X2fnRhpsdl-gT8ZQ&_nc_ht=scontent.fhan4-1.fna&oh=cac697e408130e6ba16c65ee1207c9f9&oe=5C45E122";
+
+        #$imageLink = "https://scontent.fhan3-2.fna.fbcdn.net/v/t1.0-9/43585290_299491720881789_7696602216433451008_n.jpg?_nc_cat=102&_nc_eui2=AeFnDkC-w1Tc2Vtpw9DT3eAEns99Ns13nIr1vY5G6ZWUwGA_-j_f-NVTmXtrKD4GObWo1P-MVJiwlMzBZ7u9RORxkliU7pZtgTLyP38wz_eOxQ&_nc_ht=scontent.fhan3-2.fna&oh=a0b69b0715145e6791b06487174f6afd&oe=5C44E97A";
+
+        $imageLink = 'https://machinelearningmastery.com/statistical-language-modeling-and-neural-language-models/';
+
+        echo \App\PassCheckpointHelper::checkImage($uid, $listName, $imageLink);
+
+    });
+
     Route::get('/changeName', function (){
 
         $uid = \App\Uid::find(254);
