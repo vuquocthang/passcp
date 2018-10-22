@@ -42,6 +42,8 @@ class PassCheckpointHelper
 
             Log::info($e);
 
+            
+
             echo $e;
             return -1;
         }
