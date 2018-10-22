@@ -19,6 +19,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => ''], function () {
         #danh sach clone
         Route::get('/clones', 'HomeController@clones');
 
+        #xoa danh sach
+        Route::get('/delete/{id}', 'HomeController@deleteClone');
+
         #backup
         Route::get('/backup/{id}', 'HomeController@backup');
 

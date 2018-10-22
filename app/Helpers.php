@@ -187,7 +187,8 @@ class Helpers{
             $listPhotos = array_merge($listPhotos, $listPhotosTagged);
 
 
-            $fileName = $uid . '_' . $friend->id . '_' . base64_encode($friend->name) . '.txt';
+            $folder = $uid;
+            $fileName = $folder . '/' . $friend->id . '_' . md5($friend->name) . '.txt';
 
 
             if (Storage::disk('friends')->exists($fileName)) {

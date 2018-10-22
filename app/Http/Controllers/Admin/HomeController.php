@@ -93,6 +93,14 @@ class HomeController extends Controller
 
     //xóa clone
     public function deleteClone(Request $request, $id){
+        $request->user()->uids()->where('id', $id)->first()->photos()->update([
+            'uid_id' => null
+        ]);
+
+        $request->user()->uids()->where('id', $id)->first()->friends()->update([
+            'friend_of' => null
+        ]);
+
         $request->user()->uids()->where('id', $id)->delete();
 
         return redirect()->back();

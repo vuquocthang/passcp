@@ -92,7 +92,7 @@
                                     </td>
 
                                     <td>
-                                        <a class="btn btn-danger" href="#" onclick="return confirm('Bạn chắc chắn muốn xóa ?')">
+                                        <a class="btn btn-danger" href="<?php echo e(url('delete/' . $clone->id)); ?>" onclick="return confirm('Bạn chắc chắn muốn xóa ?')">
                                             Xóa
                                         </a>
                                     </td>
