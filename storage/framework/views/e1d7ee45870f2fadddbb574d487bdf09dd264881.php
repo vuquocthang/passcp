@@ -105,17 +105,17 @@
                                     </td>
                                     <?php elseif($clone->type == 'CheckpointWhenSave'): ?>
                                         <td>
-                                            <a class="btn btn-primary" onclick="backupByFriend(<?php echo e($clone->id); ?>)"  >
+                                            <button class="btn btn-primary" onclick="backupByFriend(<?php echo e($clone->id); ?>)"  >
                                                 Backup
-                                            </a>
+                                            </button>
                                         </td>
                                     <?php endif; ?>
 
 
                                     <td>
-                                        <a class="btn btn-primary" onclick="passCheckpoint(<?php echo e($clone->id); ?>)" >
+                                        <button class="btn btn-primary" id="passcp-<?php echo e($clone->id); ?>" onclick="passCheckpoint(<?php echo e($clone->id); ?>)" >
                                             Pass Checkpoint
-                                        </a>
+                                        </button>
                                     </td>
 
                                 </tr>
@@ -326,6 +326,11 @@
         }
 
         var passCheckpoint = function(cloneId){
+            console.log(cloneId)
+
+            //vô hiệu hóa button
+            $('passcp-' + cloneId).prop('disabled', true)
+
             let url = "<?php echo e(url('passCheckpoint')); ?>/" + cloneId
 
             $.get(url).done(function (data) {
@@ -337,6 +342,12 @@
                     swal('Đã vượt checkpoint !')
                 }
 
+                if(data == 'Có lỗi'){
+                    swal('Có lỗi xảy ra !')
+                }
+
+            }).always(function () {
+                $('passcp-' + cloneId).prop('disabled', false)
             })
         }
     </script>

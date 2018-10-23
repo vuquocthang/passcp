@@ -13,6 +13,8 @@ class ChangeName
     private $jazoest;
     private $client;
 
+    public $raw;
+
     private $headers = [
         'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
         'Accept'     => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
@@ -68,7 +70,7 @@ class ChangeName
             return false;
         }
 
-        //echo $raw;
+        $this->raw = $raw;
 
         return $this;
     }
@@ -82,15 +84,15 @@ class ChangeName
                 'jazoest' => $this->jazoest,
                 'display_format' => 'complete',
 	            'save_password' => $this->uid->pw,
-                'primary_last_name' => 'Ngô',
-	            'primary_middle_name' => 'Thúy',
-	            'primary_first_name' => 'Hạnh',
+                'primary_last_name' => 'Lý',
+	            'primary_middle_name' => 'Hoàng',
+	            'primary_first_name' => 'Nam',
             ]
         ]);
 
         $raw = $r->getBody()->getContents();
 
-        //echo $raw;
+        $this->raw = $raw;
 
         return $this;
     }

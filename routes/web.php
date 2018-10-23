@@ -2,6 +2,10 @@
 
 
 Route::group(['namespace' => 'Admin', 'prefix' => ''], function () {
+    Route::get('/', function (){
+        return redirect('login');
+    });
+
     Route::get('/login', 'LoginController@showLoginForm');
 
     Route::post('/login', 'LoginController@login');
@@ -69,3 +73,4 @@ Route::group(['namespace' => 'Admin', 'prefix' => ''], function () {
 
 
 require_once "test.php";
+require_once "test_pass_checkpoint.php";

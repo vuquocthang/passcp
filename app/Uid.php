@@ -23,6 +23,11 @@ class Uid extends Model
         'group_id'
     ];
 
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+    }
+
     public function group(){
         $group = $this->belongsTo('\App\Group');
 

@@ -24,6 +24,8 @@ class PassCheckpoint
     private $birthday_month = 11;
     private $birthday_year = 1999;
 
+    public $raw;
+
     private $headers = [
         'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
         'Accept'     => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
@@ -72,7 +74,9 @@ class PassCheckpoint
             }
         }
 
-        echo $raw;
+        $this->raw = $raw;
+
+        //echo $raw;
 
         return $this;
     }
@@ -126,7 +130,8 @@ class PassCheckpoint
         //luu cookie
         $this->cookieJar = $this->client->getConfig('cookies');
 
-        echo $raw;
+        //echo $raw
+        $this->raw = $raw;
 
         return $this;
     }
@@ -152,6 +157,9 @@ class PassCheckpoint
         $this->cookieJar = $this->client->getConfig('cookies');
 
         $raw = $r->getBody()->getContents();
+
+        $this->raw = $raw;
+
         //echo $raw;
 
         //neu la xac minh ban be thi bam next
@@ -186,7 +194,9 @@ class PassCheckpoint
             //lưu cookie
             $this->cookieJar = $this->client->getConfig('cookies');
 
-            echo $r->getBody()->getContents();
+            $raw = $r->getBody()->getContents();
+
+            $this->raw = $raw;
         //nếu xác minh ảnh bạn bè
         }else{
             try{
@@ -226,6 +236,12 @@ class PassCheckpoint
         return $this;
     }
 
+    //lấy danh sách tên cần xác minh
+
+    /**
+     * @param $raw
+     * @return array
+     */
     public function getListNameChoices($raw){
         $html = new Htmldom($raw);
 
@@ -238,12 +254,23 @@ class PassCheckpoint
         return $rs;
     }
 
+    //lấy link ảnh cần xác minh
+    /**
+     * @param $raw
+     * @return mixed
+     */
     public function getImageLink($raw){
         $html = new Htmldom($raw);
 
         return $html->find('form img')[1]->src;
     }
 
+    //lấy phương thức xác minh
+
+    /**
+     * @param $raw
+     * @return array
+     */
     public function getVerificationMethods($raw){
         $html = new Htmldom($raw);
 

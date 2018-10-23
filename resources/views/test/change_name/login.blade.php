@@ -1,6 +1,13 @@
+<html>
+    <head>
+        <title>Login</title>
+    </head>
 
-{{ dd($raw) }}
+    <body>
+        <iframe>
+            {!! $raw !!}
+        </iframe>
+    </body>
+</html>
 
-<iframe>
-    {!! $raw !!}
-</iframe>
+

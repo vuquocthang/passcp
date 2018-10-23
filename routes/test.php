@@ -6,12 +6,12 @@ use Yangqi\Htmldom\Htmldom;
 Route::group([ 'prefix' => 'test'], function () {
     Route::get('/getToken', function (){
         //pre processing
-        $uid = "uug54529@nbzmr.com";
-        $pw = "21121996";
+        $uid = "100007563310713";
+        $pw = "vanhuan1992@@@";
 
-        $data = Helpers::getToken($uid, $pw);
+        $token = Helpers::getToken($uid, $pw);
 
-        var_dump($data);
+        return $token;
     });
 
     Route::get('/getListFriends', function (){
@@ -120,19 +120,72 @@ Route::group([ 'prefix' => 'test'], function () {
     });
 
     Route::get('/process2', function (){
-        $uid = '100028987356675';
 
+        ini_set('max_execution_time', 30000);
+
+        $uid = '100007563310713';
+
+        /*
         $listName = [
             'Đỗ Công Thương',
             'Kiên T Đinh',
-            'Quang Minh'
+            'Quang Minh',
+            'Đỗ Trọng Sang Xuân',
+            'Tien Phan',
+            'Thuyền Nguyễn',
+            'Nguyễn Anh Tuấn',
+            'An Trần',
+            'Mong Mit Nguyen',
+            'Nguyễn Vạn Toàn'
         ];
 
-        $imageLink = "https://scontent.fhan4-1.fna.fbcdn.net/v/t1.0-9/41804883_332034854198456_3978231539732316160_n.jpg?_nc_cat=105&_nc_eui2=AeEt_SNAv-IijCkap-KstFW2xiu9zq1t5K5LAv1ekt06FQfMgmKawO-9bZZWufcsL1vlKhHRhwGi5ZqK7zpmen-prty0e9X2fnRhpsdl-gT8ZQ&_nc_ht=scontent.fhan4-1.fna&oh=cac697e408130e6ba16c65ee1207c9f9&oe=5C45E122";
+        $listName = [
+            'Truong Thi',
+            'Tổng Đài Messenger',
+            'Hỏi Làm Chi',
+            'Lê Sandy',
+            'Heo Lỳ',
+            'Minh Thư Nguyễn',
+            'Dung Nguyễn'
+        ];*/
 
-        #$imageLink = "https://scontent.fhan3-2.fna.fbcdn.net/v/t1.0-9/43585290_299491720881789_7696602216433451008_n.jpg?_nc_cat=102&_nc_eui2=AeFnDkC-w1Tc2Vtpw9DT3eAEns99Ns13nIr1vY5G6ZWUwGA_-j_f-NVTmXtrKD4GObWo1P-MVJiwlMzBZ7u9RORxkliU7pZtgTLyP38wz_eOxQ&_nc_ht=scontent.fhan3-2.fna&oh=a0b69b0715145e6791b06487174f6afd&oe=5C44E97A";
+        $listName = [
+            'Kẹo Đắng',
+            'Linh Lớn',
+            'Khang Kundy',
+            'Statusi Đểu Và Chất',
+            'Jonny Nguyễn',
+            'Bảo Nam',
+            '吳榮霖',
+        ];
 
-        $imageLink = 'https://machinelearningmastery.com/statistical-language-modeling-and-neural-language-models/';
+        $listName = [
+            'Pé Ti',
+            'Phượng Nguyễn',
+            'Sang Nguyen',
+            'Daniel Phan vỢ tHằng',
+            'Lo Bay',
+            'Nguyễn Thị Vy',
+            'Trúc Trần'
+        ];
+
+        $listName = [
+            'Người đứng Sau Hp',
+            'Giọt Nước Rơi',
+            'Tuấn Anh Sky',
+            'Cường Lord',
+            'Nguyễn Thế Điệp',
+            'Hoàng Minh',
+            'Hoang Nguyen',
+            'Đồng Cường'
+        ];
+
+
+        //$imageLink = 'https://www.facebook.com/captcha/friend_name_image.php?m=1&tag=AZl-HXBPcOr9mPfUN2Tm1ZB0SZRX7vXRw71VnUtE2c8VH74b6v_18m1Byl-pSSA4TV0x8zg5y9r8k1toqu8M6fm1RdokHkLFXlbbcnhLCryWhkuba5dQsTh88nrMpb0ZF5LaH9ibpyQx2GEms7vYwYxkrWekIAo1B5E6nRMHQE9pCzBCHGW0-DWuUg-0bwrrnqJ2cDE2SjCASSguCRRQta3UftaLRqm2G99GmDuMkutJCH8_GI9Sxw7Kx20QpuyQyP1Av5K1-wfJtS1HGkQUxHJccTI06JZ0--yBT8t7a_Xvk7ic8LnOFyKU1hO8emZjQvHHe_pXJ0DodF-M28JwEcwEqFi_3TJlnZ4wIz4hlHbEq3jI7G8GjSY7-NvIaQy_ckKAi0qIhbfONPzTJu-yntLBiwMw3p1Qa48hTxtG5r3gsmGHVzH5qs16Y8yjlUqf7UBe7JfDGgUqRqUg1Te2_xgZ&w=275';
+
+        $imageLink = 'https://www1.xup.in/exec/ximg.php?fid=19276239';
+
+        $imageLink = 'https://scontent.fhan3-1.fna.fbcdn.net/v/t1.0-9/23318983_360776704347883_4188700453161196186_n.jpg?_nc_cat=110&_nc_ht=scontent.fhan3-1.fna&oh=7f63abaf54057aed4139efbfd4d5dded&oe=5C3FC3D0';
 
         echo \App\PassCheckpointHelper::checkImage($uid, $listName, $imageLink);
 

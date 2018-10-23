@@ -54,6 +54,11 @@ return [
             'visibility' => 'public',
         ],
 
+        'public_uploads' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads',
+        ],
+
         'friends' => [
             'driver' => 'local',
             'root' => storage_path('app/public/friends'),

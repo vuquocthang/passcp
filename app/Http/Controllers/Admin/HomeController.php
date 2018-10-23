@@ -159,11 +159,15 @@ class HomeController extends Controller
             return "Live";
         }
 
-        $PassCP = new PassCheckpoint($uid);
-        //$PassCP->login(); //->next()->selectVerificationMethod();
-        $PassCP->login()->next()->selectVerificationMethod()->pass()->pass()->pass()->pass()->pass();
+        try{
+            $PassCP = new PassCheckpoint($uid);
+            //$PassCP->login(); //->next()->selectVerificationMethod();
+            $PassCP->login()->next()->selectVerificationMethod()->pass()->pass()->pass()->pass()->pass();
 
-        return "Đã xong";
+            return "Đã xong";
+        }catch (\Exception $e){
+            return "Có lỗi";
+        }
     }
 
 

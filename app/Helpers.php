@@ -34,11 +34,11 @@ class Helpers{
 
         $res = $client->get($url);
 
-        //$data = json_decode($res->getBody());
+        $data = json_decode($res->getBody()->getContents());
 
-        //return $data;
+        var_dump($data);
 
-        echo $res->getBody();
+        return $data->access_token;
     }
 
     static function getListFriends($token, $uid){

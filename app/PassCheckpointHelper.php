@@ -13,10 +13,9 @@ class PassCheckpointHelper
      * @param $imageLink : link ảnh . ex: http://fb.com/e.jpg
      */
     public static function checkImage($uid, $listName, $imageLink){
-
         try{
             //gửi sang flask
-            $url = "http://127.0.0.1:5000/process2";
+            $url = config('app.api_url') . "/process2";
 
             $client = new \GuzzleHttp\Client();
 
@@ -39,15 +38,11 @@ class PassCheckpointHelper
 
             return -1;
         }catch (\Exception $e){
-
             Log::info($e);
-
-            
 
             echo $e;
             return -1;
         }
-
     }
 
 }
